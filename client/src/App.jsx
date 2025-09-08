@@ -1,0 +1,3 @@
+import React, { useEffect, useState } from 'react';
+const API_URL = import.meta.env.VITE_API_URL || '/api/ipos';
+export default function App() { const [ipos,setIpos]=useState([]); const [loading,setLoading]=useState(false); const fetchData=async()=>{setLoading(true);try{const res=await fetch(API_URL);const data=await res.json();setIpos(data);}catch(err){console.error(err);}finally{setLoading(false);}}; useEffect(()=>{fetchData();},[]); return(<div className='min-h-screen'>IPO Tracker</div>); }
